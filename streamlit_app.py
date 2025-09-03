@@ -16,7 +16,6 @@ st.sidebar.header('Подбор задач:')
 
 levels = df['Level'].unique().tolist()
 levels.append('Разные')
-levels.remove('')
 
 level_input = st.sidebar.selectbox('Уровень задач', levels)
 if level_input != 'Разные':
