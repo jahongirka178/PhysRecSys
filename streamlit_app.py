@@ -7,6 +7,7 @@ st.title('📚 Готовимся к поступлению в ВУЗы')
 DATA_PATH = 'https://raw.githubusercontent.com/jahongirka178/PhysRecSys/refs/heads/master/problems.csv'
 
 df = pd.read_csv(DATA_PATH)
+df['Level'] = df['Level'].replace({'А': 'A'})
 
 st.write(df['Task'].iloc[1])
 
@@ -15,6 +16,7 @@ st.sidebar.header('Подбор задач:')
 
 levels = df['Level'].unique().tolist()
 levels.append('Разные')
+levels.remove('')
 
 level_input = st.sidebar.selectbox('Уровень задач', levels)
 if level_input != 'Разные':
