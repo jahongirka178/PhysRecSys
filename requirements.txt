@@ -2,6 +2,7 @@ streamlit>=1.26.0
 pandas==2.3.2
 numpy==1.26.4
 scipy>=1.10,<1.16
+gensim==4.3.3
 nltk==3.9.1
 matplotlib
 Pillow
