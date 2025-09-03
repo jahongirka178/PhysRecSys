@@ -19,7 +19,10 @@ def show_A(df):
     for _, row in df.iterrows():
         k = k + 1
         st.subheader(f"Задача №{k}: \n {row['Task']}")
-        choices = json.loads(row['Choices'])
+        try:
+            choices = json.loads(row["Choices"])
+        except Exception:
+            choices = []
         show_images(row['Images'])
         answer = st.radio(
             "Выберите ответ:",
