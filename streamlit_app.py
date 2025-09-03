@@ -109,5 +109,8 @@ if st.button("Проверить"):
 
 st.header('В Боковом меню введите ключевые слова и мы найдем похожие задачи.')
 st.sidebar.header('Подбор похожих задач:')
-
+st.sidebar.answer = st.text_area(
+    "Задача",
+    height=200
+)
 
