@@ -79,5 +79,5 @@ if level_input == 'B':
 
 if level_input == 'C':
     st.header(f'Задачи уровня C: {number_of_tasks} штук')
-    c_tasks = df[df['Level'] == 'C'].sample(int(number_of_tasks))
+    c_tasks = df[df['Level'] == 'С'].sample(int(number_of_tasks))
     show_C(c_tasks)
