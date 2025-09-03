@@ -27,7 +27,7 @@ def show_B(df):
     for i, row in df.iterrows():
         st.write(f"Задача: \n {row['Task']}")
         show_images(row['Images'])
-        answer = st.text_input("Введите текст:", key=f"answer_{i}")
+        answer = st.text_input("Введите ответ:", key=f"answer_{i}")
 
 
 st.title('📚 Готовимся к поступлению в ВУЗы')
