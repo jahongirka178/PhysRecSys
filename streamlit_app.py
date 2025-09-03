@@ -48,6 +48,7 @@ if level_input != 'Разные':
     number_of_tasks = st.sidebar.slider('Количество задач', 0, 20, 10)
 
 if level_input == 'A':
+    st.header(f'Задачи уровня A: {number_of_tasks} штук')
     a_tasks = df[df['Level'] == 'A'].sample(int(number_of_tasks))
     show_A(a_tasks)
 
