@@ -4,8 +4,35 @@ import json
 import base64
 from io import BytesIO
 from PIL import Image
+from sklearn.metrics.pairwise import cosine_similarity
 from gensim.models.doc2vec import Doc2Vec, TaggedDocument
-from nltk.tokenize import word_tokenize
+import nltk
+from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
+
+stop_words = set(stopwords.words("russian"))
+lemmatizer = WordNetLemmatizer()
+
+
+def preprocess(text: str):
+    tokens = nltk.word_tokenize(text.lower())
+    tokens = [lemmatizer.lemmatize(w) for w in tokens if w.isalpha()]
+    tokens = [w for w in tokens if w not in stop_words]
+    return tokens
+
+def build_model(df, column="Task"):
+    documents = [TaggedDocument(preprocess(task), [i]) for i, task in enumerate(df[column])]
+    model = Doc2Vec(vector_size=100, window=5, min_count=1, workers=4, epochs=40)
+    model.build_vocab(documents)
+    model.train(documents, total_examples=model.corpus_count, epochs=model.epochs)
+    return model
+
+def find_similar_task(df, model, user_text, column="Task", topn=1):
+    user_vec = model.infer_vector(preprocess(user_text))
+    task_vecs = [model.infer_vector(preprocess(task)) for task in df[column]]
+    sims = cosine_similarity([user_vec], task_vecs)[0]
+    best_idx = sims.argsort()[::-1][:topn]
+    return df[column].iloc[best_idx].tolist()
 
 def show_images(row):
     img_list = json.loads(row)
@@ -118,4 +145,6 @@ answer = st.sidebar.text_area(
 )
 
 if st.sidebar.button("Найти"):
-    st.sidebar.write("Идёт поиск...")
+    model = build_model(df)
+    result = find_similar_task(df, model, answer, topn=5)
+
