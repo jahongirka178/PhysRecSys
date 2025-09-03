@@ -24,10 +24,10 @@ def show_A(df):
 
 
 def show_B(df):
-    for _, row in df.iterrows():
+    for i, row in df.iterrows():
         st.write(f"Задача: \n {row['Task']}")
         show_images(row['Images'])
-        answer = st.text_input("Введите текст:")
+        answer = st.text_input("Введите текст:", key=f"answer_{i}")
 
 
 st.title('📚 Готовимся к поступлению в ВУЗы')
