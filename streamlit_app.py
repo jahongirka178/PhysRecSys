@@ -99,3 +99,7 @@ if level_input == 'Разные':
     st.header(f'Задачи уровня C - 5 штук.')
     c_tasks = df[df['Level'] == 'C'].sample(5)
     show_C(c_tasks)
+
+
+if st.button("Посчитать"):
+    st.write("Идёт подсчёт...")
