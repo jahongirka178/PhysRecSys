@@ -2,7 +2,7 @@ import pandas as pd
 import streamlit as st
 
 
-st.title('🎈 Задачник')
+st.title('🎈 Задачи')
 
 
 DATA_PATH = 'https://raw.githubusercontent.com/jahongirka178/PhysRecSys/refs/heads/master/problems.csv'
