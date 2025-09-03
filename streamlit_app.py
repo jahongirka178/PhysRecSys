@@ -49,6 +49,8 @@ DATA_PATH = 'https://raw.githubusercontent.com/jahongirka178/PhysRecSys/refs/hea
 
 df = pd.read_csv(DATA_PATH)
 df['Level'] = df['Level'].replace({'А': 'A'})
+df['Level'] = df['Level'].replace({'С': 'C'})
+
 
 st.write('''На реальном экзамене задачи делятся на следующие типы: \n
 Часть 1 содержит 30 заданий (А1 – А30). К каждому заданию дается 4 варианта ответа, из которых правильный только один. \n
@@ -77,7 +79,7 @@ if level_input == 'B':
     b_tasks = df[df['Level'] == 'B'].sample(int(number_of_tasks))
     show_B(b_tasks)
 
-if level_input == 'С':
+if level_input == 'C':
     st.header(f'Задачи уровня C: {number_of_tasks} штук')
-    c_tasks = df[df['Level'] == 'С'].sample(int(number_of_tasks))
+    c_tasks = df[df['Level'] == 'C'].sample(int(number_of_tasks))
     show_C(c_tasks)
