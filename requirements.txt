@@ -4,5 +4,6 @@ numpy
 beautifulsoup4
 Pillow
 matplotlib
+scipy
 gensim
 nltk
