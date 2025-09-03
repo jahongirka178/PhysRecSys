@@ -70,25 +70,29 @@ if level_input != 'Разные':
     number_of_tasks = st.sidebar.slider('Количество задач', 0, 20, 10)
 
 if level_input == 'A':
-    st.header(f'Задачи уровня A: {number_of_tasks} штук')
+    st.header(f'Задачи уровня A - {number_of_tasks} штук')
     a_tasks = df[df['Level'] == 'A'].sample(int(number_of_tasks))
     show_A(a_tasks)
 
 if level_input == 'B':
-    st.header(f'Задачи уровня B: {number_of_tasks} штук')
+    st.header(f'Задачи уровня B - {number_of_tasks} штук')
     b_tasks = df[df['Level'] == 'B'].sample(int(number_of_tasks))
     show_B(b_tasks)
 
 if level_input == 'C':
-    st.header(f'Задачи уровня C: {number_of_tasks} штук')
+    st.header(f'Задачи уровня C - {number_of_tasks} штук')
     c_tasks = df[df['Level'] == 'C'].sample(int(number_of_tasks))
     show_C(c_tasks)
 
 if level_input == 'Разные':
-    st.header(f'Задачи уровня A: 15 штук. Задачи уровня B: 10 штук. Задачи уровня C: 5 штук')
+    st.header(f'Задачи уровня A - 15 штук.')
     a_tasks = df[df['Level'] == 'A'].sample(15)
     show_A(a_tasks)
+
+    st.header(f'Задачи уровня B - 10 штук.')
     b_tasks = df[df['Level'] == 'B'].sample(10)
     show_B(b_tasks)
+
+    st.header(f'Задачи уровня C - 5 штук.')
     c_tasks = df[df['Level'] == 'C'].sample(5)
     show_C(c_tasks)
