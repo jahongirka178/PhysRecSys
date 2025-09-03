@@ -18,7 +18,7 @@ def show_A(df):
     k = 0
     for _, row in df.iterrows():
         k = k + 1
-        st.write(f"#Задача №{k}: \n {row['Task']}")
+        st.subheader(f"Задача №{k}: \n {row['Task']}")
         choices = json.loads(row['Choices'])
         show_images(row['Images'])
         for i, ch in enumerate(choices, 1):
@@ -29,7 +29,7 @@ def show_B(df):
     k = 0
     for i, row in df.iterrows():
         k = k + 1
-        st.write(f"Задача №{k}: \n {row['Task']}")
+        st.subheader(f"Задача №{k}: \n {row['Task']}")
         show_images(row['Images'])
         answer = st.text_input("Введите ответ:", key=f"answer_{i}")
 
@@ -38,7 +38,7 @@ def show_C(df):
     k = 0
     for i, row in df.iterrows():
         k = k + 1
-        st.write(f"Задача №{k}: \n {row['Task']}")
+        st.subheader(f"Задача №{k}: \n {row['Task']}")
         show_images(row['Images'])
         answer = st.text_input("Введите ответ:", key=f"answer_{i}")
 
