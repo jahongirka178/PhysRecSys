@@ -21,8 +21,11 @@ def show_A(df):
         st.subheader(f"Задача №{k}: \n {row['Task']}")
         choices = json.loads(row['Choices'])
         show_images(row['Images'])
-        for i, ch in enumerate(choices, 1):
-            st.write(f"{i}) {ch}")
+        answer = st.radio(
+            "Выберите ответ:",
+            choices,
+            key=f"task_{k}"
+        )
 
 
 def show_B(df):
