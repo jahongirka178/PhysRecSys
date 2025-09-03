@@ -4,5 +4,5 @@ numpy
 beautifulsoup4
 Pillow
 matplotlib
-gensim
+gensim==4.3.2
 nltk
