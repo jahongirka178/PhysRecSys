@@ -1,5 +1,26 @@
 import pandas as pd
 import streamlit as st
+import json
+import base64, io
+from io import BytesIO
+from PIL import Image
+
+def show_images(row):
+    img_list = json.loads(row)
+    for img_b64 in img_list:
+        img_bytes = base64.b64decode(img_b64)
+        img = Image.open(BytesIO(img_bytes))
+        st.image(img)
+
+
+def show_A(df):
+    for _, row in df.iterrows():
+        st.write(f"Задача: \n {row['Task']}")
+        choices = json.loads(row['Choices'])
+        for i, ch in enumerate(choices, 1):
+            st.write(f"{i}) {ch}")
+        show_images(row['Images'])
+
 
 
 st.title('📚 Готовимся к поступлению в ВУЗы')
@@ -26,7 +47,9 @@ level_input = st.sidebar.selectbox('Уровень задач', levels)
 if level_input != 'Разные':
     number_of_tasks = st.sidebar.slider('Количество задач', 0, 20, 10)
 
-
+if level_input == 'A':
+    a_tasks = df[df['Level'] == 'A'].sample(int(number_of_tasks))
+    show_A(a_tasks)
 
 
 
