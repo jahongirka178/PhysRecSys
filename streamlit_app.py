@@ -15,8 +15,10 @@ def show_images(row):
 
 
 def show_A(df):
+    k = 0
     for _, row in df.iterrows():
-        st.write(f"Задача: \n {row['Task']}")
+        k = k + 1
+        st.write(f"Задача №{k}: \n {row['Task']}")
         choices = json.loads(row['Choices'])
         show_images(row['Images'])
         for i, ch in enumerate(choices, 1):
@@ -24,8 +26,19 @@ def show_A(df):
 
 
 def show_B(df):
+    k = 0
     for i, row in df.iterrows():
-        st.write(f"Задача: \n {row['Task']}")
+        k = k + 1
+        st.write(f"Задача №{k}: \n {row['Task']}")
+        show_images(row['Images'])
+        answer = st.text_input("Введите ответ:", key=f"answer_{i}")
+
+
+def show_C(df):
+    k = 0
+    for i, row in df.iterrows():
+        k = k + 1
+        st.write(f"Задача №{k}: \n {row['Task']}")
         show_images(row['Images'])
         answer = st.text_input("Введите ответ:", key=f"answer_{i}")
 
@@ -63,3 +76,8 @@ if level_input == 'B':
     st.header(f'Задачи уровня B: {number_of_tasks} штук')
     b_tasks = df[df['Level'] == 'B'].sample(int(number_of_tasks))
     show_B(b_tasks)
+
+if level_input == 'C':
+    st.header(f'Задачи уровня C: {number_of_tasks} штук')
+    c_tasks = df[df['Level'] == 'C'].sample(int(number_of_tasks))
+    show_C(c_tasks)
