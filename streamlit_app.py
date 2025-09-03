@@ -24,6 +24,7 @@ def show_A(df):
         answer = st.radio(
             "Выберите ответ:",
             choices,
+            index=None,
             key=f"task_{k}"
         )
 
