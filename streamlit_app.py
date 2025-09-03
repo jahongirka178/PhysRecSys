@@ -147,4 +147,5 @@ answer = st.sidebar.text_area(
 if st.sidebar.button("Найти"):
     model = build_model(df)
     result = find_similar_task(df, model, answer, topn=5)
+    st.dataframe(result)
 
