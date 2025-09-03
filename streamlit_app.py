@@ -4,7 +4,8 @@ import json
 import base64
 from io import BytesIO
 from PIL import Image
-
+from gensim.models.doc2vec import Doc2Vec, TaggedDocument
+from nltk.tokenize import word_tokenize
 
 def show_images(row):
     img_list = json.loads(row)
