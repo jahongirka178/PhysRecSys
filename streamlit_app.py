@@ -1,4 +1,5 @@
 import pandas as pd
+pd.set_option("display.max_colwidth", None)
 import streamlit as st
 import json
 import base64
@@ -152,4 +153,5 @@ answer = st.sidebar.text_area(
 if st.sidebar.button("Найти"):
     model = build_model(df)
     result = find_similar_task(df, model, answer, topn=5)
-    show_B(result)
+    st.dataframe(result)
+
