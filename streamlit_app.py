@@ -13,7 +13,8 @@ st.write(df['Task'].iloc[1])
 # Sidebar
 st.sidebar.header('Подбор задач:')
 
-levels = df['Level'].unique() + ['Разные']
+levels = df['Level'].unique() +\
+levels.append('Разные')
 level_input = st.sidebar.selectbox('Уровень задач', levels)
 
 
