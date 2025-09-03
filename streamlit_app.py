@@ -6,9 +6,13 @@ from io import BytesIO
 from PIL import Image
 from sklearn.metrics.pairwise import cosine_similarity
 from gensim.models.doc2vec import Doc2Vec, TaggedDocument
+
 import nltk
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
+nltk.download("stopwords")
+nltk.download("punkt")       # если токенизация нужна
+nltk.download("wordnet")     # если используешь WordNetLemmatizer
 
 stop_words = set(stopwords.words("russian"))
 lemmatizer = WordNetLemmatizer()
