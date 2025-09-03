@@ -101,5 +101,5 @@ if level_input == 'Разные':
     show_C(c_tasks)
 
 
-if st.button("Посчитать"):
+if st.button("Проверить"):
     st.write("Идёт подсчёт...")
