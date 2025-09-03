@@ -114,3 +114,5 @@ answer = st.sidebar.text_area(
     height=200
 )
 
+if st.sidebar.button("Найти"):
+    st.sidebar.write("Идёт поиск...")
