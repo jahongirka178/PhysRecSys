@@ -10,4 +10,11 @@ df = pd.read_csv(DATA_PATH)
 
 st.write(df['Task'].iloc[1])
 
-st.sidebar.header('Выберите тип задач:')
+# Sidebar
+st.sidebar.header('Подбор задач:')
+
+levels = df['Level'].unique() + ['Разные']
+level_input = st.sidebar.selectbox('Уровень задач', levels)
+
+
+
