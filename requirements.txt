@@ -1,9 +1,8 @@
 streamlit>=1.26.0
-pandas
-numpy
-beautifulsoup4
-Pillow
+pandas==2.3.2
+numpy==1.26.4
+scipy==1.15.2
+gensim==4.3.3
+nltk==3.9.1
 matplotlib
-scipy
-gensim
-nltk
+Pillow
