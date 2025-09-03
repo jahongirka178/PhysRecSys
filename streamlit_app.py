@@ -12,6 +12,8 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 nltk.download("stopwords")
 nltk.download("punkt")       # если токенизация нужна
+nltk.download("punkt_tab")   # это новое, нужно для токенизатора
+nltk.download("stopwords")
 nltk.download("wordnet")     # если используешь WordNetLemmatizer
 
 stop_words = set(stopwords.words("russian"))
